@@ -1,0 +1,58 @@
+/*
+* Johannes Joujo analog out Sub-task 2: PWM *
+*/
+
+#include "mbed.h"
+#include "RGBLed.h"
+ 
+//Setup RGB led using PWM pins and class
+RGBLed myRGBled(p23,p24,p25); //RGB PWM pins
+ 
+int main()
+{
+     /*
+     * I start with creating 3 diffrent double values to 
+     * say how powerful the the colors should shine.
+     * I have them all the same brightness because 
+     * that is how to get the white color.
+     */
+     
+     float a = 0.8;
+     float b= 0.8;
+     float c= 0.8;
+     
+     
+     /*
+     * I create an infinit while loop so that the for loops inside 
+     * continue forever.
+     */
+     
+    while(1) {
+         
+         /*
+         * The first for loop will decrease the brightness
+         * the second will increase the brightness.
+         * They will last 2 seconds each because the 
+         * loops are each run 4 times and the delay is 0.5 seconds
+         *  2=4*0.5.
+         */
+         
+          for(int i = 0; i < 4; i++)
+         {
+            a = a-0.2;
+            b = b-0.2;
+            c = c-0.2;
+            wait(0.5);
+            myRGBled.setColor(a,b,c);
+            }
+         
+         for(int j = 0; j < 4; j++)
+         {
+            a = a+0.2;
+            b = b+0.2;
+            c = c+0.2;
+            wait(0.5);
+            myRGBled.setColor(a,b,c);
+            }      
+    }
+}

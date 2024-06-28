@@ -1,0 +1,29 @@
+/*
+* Johannes Joujo 4.1 Sub-task 1: AnalogOut *
+*/
+
+#include "mbed.h"
+
+/*
+* This task was annoying because i had do guess diffrent values 
+* untill i got to see the frequency to show up and then i 
+* had to continue my guessing until i got the correct values to show up
+* on the ossilator. 
+*/
+
+/* 
+* I found a sinus function in the book and used it but got the 
+* wrong output frequency and vpp so i had to guess. 
+*/
+
+AnalogOut port(p18);
+int main() {
+     float pi=3.14159;
+      while(1) {
+          float i;
+        for(i=0;i<2;i=i+0.0321){
+            port=0.5+0.3*sin(i*pi);
+            wait(0.00155);
+                }
+}
+}

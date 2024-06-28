@@ -1,0 +1,47 @@
+/*
+* Johannes Joujo Analog In task 3 *
+*/
+
+#include "mbed.h"
+
+/*
+* this pin vill be the pin that will be used to  
+* see how the voltage change when the pin is being rotated
+*/
+AnalogIn   ain(p19);
+
+/*
+* I start by creating an infinit while loop so that the readings can 
+* continuesly be read with a delay of 1 second. 
+*/
+
+int main()
+{
+float volt=0;
+float v=0;
+    
+    
+    while (1) {
+        
+        /*
+        * this for loop is adding all the voltages of 20 readings
+        */
+        
+        for(int i=0;i<20;i++){
+           v= ain;
+           volt= volt +v;
+
+           }
+           /*
+           * the voltage result is beeing diveded by 20 because i
+           * added 20 voltage readings together. 
+           */
+        printf("voltage: %f\n", volt/20);
+/*
+* I reset the voltage after printing it, so that the next 
+* 20 readings won't be affected by the previous result.
+*/
+        volt=0;
+        wait (1);
+    }
+}
