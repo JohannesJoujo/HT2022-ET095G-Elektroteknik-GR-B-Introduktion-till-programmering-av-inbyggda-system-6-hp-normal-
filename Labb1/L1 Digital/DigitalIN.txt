@@ -1,0 +1,66 @@
+/*
+* Johannes Joujo ET 095G Programming Exercise 1: Digital Inputs and Outputs *
+*/
+#include "mbed.h"
+
+
+// This is the in and out pins/ LED:s.
+DigitalIn d(p12);
+DigitalIn l(p13);
+DigitalIn c(p14);
+DigitalIn up(p15);
+DigitalIn r(p16);
+DigitalOut myled1(LED1);
+DigitalOut myled2(LED2);
+DigitalOut myled3(LED3);
+DigitalOut myled4(LED4);
+
+
+int main() {
+
+while(1){
+    /*
+    * when the joystick is moved to a (up, down, left or right) position
+    * one led is going to be on while the other will be off. 
+    * when the joystick is pressed while in center all led:s 
+    * will be turned off. 
+    */
+    if(r == 1){
+        myled1 = 0;
+        myled2 = 0;
+        myled3 = 1;
+        myled4 = 0;
+        }
+        if(up == 1){
+        myled1 = 0;
+        myled2 = 1;
+        myled3 = 0;
+        myled4 = 0;
+        }
+        
+        if(d == 1 ){
+        myled1 = 0;
+        myled2 = 0;
+        myled3 = 0;
+        myled4 = 4;
+        }
+        
+        
+        if(l == 1){
+        myled1 = 1;
+        myled2 = 0;
+        myled3 = 0;
+        myled4 = 0;
+        }
+        
+        if(c == 1){
+        myled1 = 0;
+        myled2 = 0;
+        myled3 = 0;
+        myled4 = 0;
+        }
+     
+    }
+
+
+}
